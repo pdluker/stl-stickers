@@ -1,0 +1,36 @@
+{
+  // stickers.stluker.com -- deploy ONLY from this folder's root (the one holding this file).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stickers",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": false,
+  "routes": [{ "pattern": "stickers.stluker.com", "custom_domain": true }],
+
+  // Static site. The Worker runs first only for dynamic paths; everything else is a plain asset.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/img/*", "/s/*", "/admin/*", "/health", "/feed.xml"]
+  },
+
+  // One sticker a day at 11:50 UTC (6:50 AM CDT / 5:50 AM CST) -- after stl-dispatcher's 11:00-11:40 block.
+  "triggers": { "crons": ["50 11 * * *"] },
+
+  "ai": { "binding": "AI" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "stickers-db", "database_id": "44d0ff70-874f-4c56-a828-9a08f5f245c2" }
+  ],
+  "r2_buckets": [{ "binding": "ART", "bucket_name": "stl-stickers" }],
+
+  "vars": {
+    "TEXT_MODEL": "claude-haiku-4-5",
+    "IMAGE_MODEL": "@cf/black-forest-labs/flux-2-dev",
+    "IMAGE_FALLBACK_MODEL": "@cf/black-forest-labs/flux-1-schnell",
+    "LUCID_MODEL": "@cf/leonardo/lucid-origin"
+    // Optional per-style override, e.g. "STYLE_IMAGE_MODELS": "{\"diecut\":[\"flux2\"]}"
+  },
+  // Secrets (wrangler secret put): ANTHROPIC_API_KEY, STICKERS_SECRET
+
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "stl-stickers",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail stickers"
+  },
+  "devDependencies": {
+    "wrangler": "^4.141.0"
+  }
+}

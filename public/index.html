@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT Sticker of the Day | stickers.stluker.com</title>
+  <meta name="description" content="One AI-generated IT meme sticker every day. Download, print, share, and browse the full archive.">
+  <meta name="theme-color" content="#16181c">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="stickers.stluker.com" href="/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="stickers.stluker.com home">
+      <span class="brand-badge">$_</span>
+      <span class="brand-text">stickers<span class="dim">.stluker.com</span></span>
+    </a>
+    <nav class="toplinks">
+      <a href="#archive">Archive</a>
+      <a href="#hall">Hall of Fame</a>
+      <a href="/feed.xml">RSS</a>
+      <a href="https://stluker.com">stluker.com</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="today-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> Sticker of the day <span id="today-date" class="mono"></span></p>
+        <h1 id="today-title">One IT sticker a day.<br><span class="dim">Made by a cron job. Approved by nobody.</span></h1>
+        <p id="today-headline" class="headline"></p>
+        <div id="today-chips" class="chips"></div>
+        <div id="today-reveal"></div>
+        <div id="today-actions" class="actions"></div>
+        <p class="fineprint">New sticker every morning around 6:50 AM Central. Free to download, print, and slap on your laptop.</p>
+      </div>
+      <div class="hero-sticker">
+        <div id="today-frame" class="sticker-frame is-loading" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="hall" class="hall" hidden aria-labelledby="hall-title">
+      <div class="section-head">
+        <h2 id="hall-title">Hall of Fame</h2>
+        <p class="dim">Most +1s, all time.</p>
+      </div>
+      <div id="hall-strip" class="hall-strip"></div>
+    </section>
+
+    <section id="archive" class="archive" aria-labelledby="archive-title">
+      <div class="section-head">
+        <h2 id="archive-title">The Archive</h2>
+        <p class="dim" id="archive-count"></p>
+      </div>
+
+      <div class="filters">
+        <div class="chip-row" id="topic-chips" role="group" aria-label="Filter by topic"></div>
+        <div class="filter-row">
+          <label class="field">
+            <span class="sr-only">Search</span>
+            <input id="search" type="search" placeholder="Search jokes, tags, vendors..." autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="sr-only">Style</span>
+            <select id="style-select">
+              <option value="">All styles</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="sr-only">Sort</span>
+            <select id="sort-select">
+              <option value="new">Newest first</option>
+              <option value="top">Most +1s</option>
+            </select>
+          </label>
+          <label class="field date-field">
+            <span class="field-label">Jump to</span>
+            <input id="date-jump" type="date">
+          </label>
+        </div>
+      </div>
+
+      <div id="grid" class="grid" aria-live="polite"></div>
+      <p id="empty" class="empty" hidden>No stickers match that. Yet.</p>
+      <div class="more-wrap"><button id="more" class="btn btn-ghost" hidden>Load more</button></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><span class="mono">stickers.stluker.com</span> is part of <a href="https://stluker.com">stluker.com</a>. Jokes by Claude Haiku, art by FLUX on Cloudflare Workers AI, typesetting by a very small SVG engine.</p>
+    <p class="dim">Vendor names are used for parody. No logos were harmed.</p>
+  </footer>
+
+  <dialog id="detail" class="detail" aria-labelledby="detail-title">
+    <div class="detail-inner">
+      <button class="icon-btn close" id="detail-close" aria-label="Close">&times;</button>
+      <div class="detail-sticker"><div id="detail-frame" class="sticker-frame"></div></div>
+      <div class="detail-copy">
+        <p class="eyebrow mono" id="detail-date"></p>
+        <h2 id="detail-title"></h2>
+        <div id="detail-chips" class="chips"></div>
+        <div id="detail-reveal"></div>
+        <div id="detail-actions" class="actions"></div>
+        <details class="alt">
+          <summary>Image description</summary>
+          <p id="detail-alt"></p>
+        </details>
+        <div class="detail-nav">
+          <button class="btn btn-ghost" id="detail-prev">&larr; Older</button>
+          <button class="btn btn-ghost" id="detail-next">Newer &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
