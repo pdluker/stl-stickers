@@ -475,8 +475,8 @@ async function writeCopy(env, plan, recent) {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
         body: JSON.stringify({
-          model: env.TEXT_MODEL || 'claude-haiku-4-5',
-          max_tokens: 900,
+          model: env.TEXT_MODEL || 'claude-haiku-5-5',
+          max_tokens: 2700,
           system: systemPrompt(),
           messages: [{ role: 'user', content: userPrompt(plan, recent) }],
         }),
@@ -681,7 +681,7 @@ export async function runDaily(env, trigger, { date, force = false } = {}) {
         copy_json=excluded.copy_json, tags=excluded.tags, scene=excluded.scene, image_prompt=excluded.image_prompt, alt_text=excluded.alt_text,
         text_model=excluded.text_model, image_model=excluded.image_model, has_art=excluded.has_art`)
       .bind(id, now, plan.topic, plan.style, content.headline, JSON.stringify(content.copy), content.tags.join(','), content.scene,
-        artResult ? artResult.prompt : null, content.alt_text, env.MOCK_AI === '1' ? 'mock' : (env.TEXT_MODEL || 'claude-haiku-4-5'),
+        artResult ? artResult.prompt : null, content.alt_text, env.MOCK_AI === '1' ? 'mock' : (env.TEXT_MODEL || 'claude-haiku-5-5'),
         art ? art.model : 'none', art ? 1 : 0)
       .run();
 

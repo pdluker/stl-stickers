@@ -24,7 +24,7 @@
   "r2_buckets": [{ "binding": "ART", "bucket_name": "stl-stickers" }],
 
   "vars": {
-    "TEXT_MODEL": "claude-haiku-4-5",
+    "TEXT_MODEL": "claude-haiku-5-5",
     "IMAGE_MODEL": "@cf/black-forest-labs/flux-2-dev",
     "IMAGE_FALLBACK_MODEL": "@cf/black-forest-labs/flux-1-schnell",
     "LUCID_MODEL": "@cf/leonardo/lucid-origin"
